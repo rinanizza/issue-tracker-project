@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Define the Issue Schema
-const issueSchema = new Schema({
+const IssueSchema = new Schema({
   issue_title: { type: String, required: true },
   issue_text: { type: String, required: true },
   created_on:  Date,
@@ -16,13 +16,13 @@ const issueSchema = new Schema({
 });
 
 // Define the Project Schema
-const projectSchema = new Schema({
+const ProjectSchema = new Schema({
   name: { type: String, required: true }, 
-  issues: [issueSchema] // Embeds the Issue Schema as an array
+  issues: [IssueSchema] // Embeds the Issue Schema as an array
 });
 
 // Create and export the models
-const Issue = mongoose.model('Issue', issueSchema);
-const Project = mongoose.model('Project', projectSchema);
+const Issue = mongoose.model('Issue', IssueSchema);
+const Project = mongoose.model('Project', ProjectSchema);
 
 module.exports = { Issue, Project };
